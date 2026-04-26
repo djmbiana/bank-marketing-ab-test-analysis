@@ -36,7 +36,34 @@ GROUP BY month;
 -- Supporting columns
 -- Job Column
 SELECT job
-       , COUNT(job) AS job_count
-       , COUNT(CASE WHEN job IS NULL THEN 1 END) AS null_count
+       , COUNT(*) AS total_rows
+       , COUNT(job) AS non_null_count
+       , COUNT(*) - COUNT(job) AS null_count
 FROM bank_marketing_raw
 GROUP BY job;
+
+-- Balance column 
+SELECT COUNT(*) AS total_rows 
+       , COUNT(balance) AS non_null_rows
+       , COUNT(*) - COUNT(balance) AS null_rows
+       , COUNT(CASE WHEN balance <= 0 THEN 1 END) AS zero_negative_balance
+       , COUNT(CASE WHEN balance > 0 THEN 1 END) AS non_zero_balance
+FROM bank_marketing_raw;
+
+-- Poutcome column
+SELECT poutcome
+       , COUNT(*) AS total_rows
+       , COUNT(poutcome) AS non_null_rows
+       , COUNT(*) - COUNT(poutcome) AS null_rows
+FROM bank_marketing_raw
+GROUP BY poutcome
+ORDER BY non_null_rows DESC;
+
+-- Education column
+SELECT education
+       , COUNT(*) AS total_rows
+       , COUNT(education) AS non_null_rows
+       , COUNT(*) - COUNT(education) AS null_rows
+FROM bank_marketing_raw
+GROUP BY education
+ORDER BY non_null_rows DESC;
