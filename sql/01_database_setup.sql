@@ -1,4 +1,14 @@
--- Setup: Bank Marketing Analysis
+-- ============================================
+--              DATABASE SETUP 
+-- ============================================
+
+-- >>> database creation <<<
+-- PostgreSQL will be used for this project
+-- Execute in PostgreSQL (psql)
+-- CREATE DATABASE bank_marketing
+
+-- >>> bank marketing table <<<
+-- bank_marketing_raw contains the raw CSV data
 CREATE TABLE bank_marketing_raw (
     id SERIAL PRIMARY KEY
     , age INT
@@ -20,6 +30,7 @@ CREATE TABLE bank_marketing_raw (
     , y TEXT
 );
 
+-- >>> Loading the data into the Postgres table <<<
 -- Load Data (Note: This was run in the terminal via the psql command)
 -- \copy bank_marketing_raw(
 --     age, job, marital, education, default_status, balance,
@@ -30,5 +41,6 @@ CREATE TABLE bank_marketing_raw (
 -- DELIMITER ';'
 -- CSV HEADER;
 
--- Confirmation
-SELECT COUNT(*) FROM bank_marketing_raw;
+-- >>> Sanity check: Row Count <<<
+SELECT COUNT(*) 
+FROM bank_marketing_raw;

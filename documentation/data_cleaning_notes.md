@@ -49,6 +49,12 @@
 - 288 records are labeled as “unknown”. this is a small share and will be retained as its own category 
 - Job column will be used for segmentation to compare subscription rates across occupations and provide context when interpreting A/B results
 
+### Age column
+- No NULLs or unknown present in the age column
+- Age will be used for segmentation to compare subscription rates across different age groups
+- Age may be grouped into ranges during analysis to simplify comparisons and identify patterns in behavior
+- Exact group boundaries will be defined during EDA based on the distribution of the data
+
 ### Balance column
 - No NULLs or unknown present, making it usable for analysis
 - 7,280 clients have balances of zero or below, while 37,931 clients have positive balances
