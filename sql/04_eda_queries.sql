@@ -88,7 +88,8 @@ SELECT contact_group
             COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
              2) AS no_percentage
 FROM age_quartile
-GROUP BY contact_group, age_group
+GROUP BY contact_group
+         , age_group
 ORDER BY age_group;
 
 
@@ -114,7 +115,8 @@ SELECT contact_group
             COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
              2) AS no_percentage
 FROM poutcome_analysis
-GROUP BY contact_group, poutcome_clean
+GROUP BY contact_group
+         , poutcome_clean
 ORDER BY poutcome_clean;
 
 -- How does this segmentation affect our A/B groups?
@@ -137,5 +139,6 @@ SELECT contact_group
             COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
              2) AS no_percentage
 FROM poutcome_analysis
-GROUP BY contact_group, poutcome_clean
+GROUP BY contact_group
+         , poutcome_clean
 ORDER BY poutcome_clean;
