@@ -49,6 +49,49 @@ GROUP BY contact_group;
 
 -->> segementation variable analysis <<
 
+-- age divided into quartiles, getting the MIN and MAX per quartile to show the age range
+-- the conversion rate per age range is also taken
+WITH age_quartile AS (
+    SELECT *
+           , NTILE(4) OVER (ORDER BY age) AS age_group
+    FROM bank_marketing_clean
+)
+
+SELECT age_group
+       , MIN(age) AS min_age
+       , MAX(age) AS max_age
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM age_quartile
+GROUP BY age_group
+ORDER BY age_group;
+
+-- segmented age into our A/B groups
+WITH age_quartile AS (
+    SELECT *
+           , NTILE(4) OVER (ORDER BY age) AS age_group
+    FROM bank_marketing_clean
+)
+
+SELECT contact_group
+       , age_group
+       , MIN(age) AS min_age
+       , MAX(age) AS max_age
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM age_quartile
+GROUP BY contact_group, age_group
+ORDER BY age_group;
+
+
 -- poutcome
 
 -- total row count, with their conversion rates

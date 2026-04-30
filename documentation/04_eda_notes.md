@@ -27,9 +27,31 @@
 
 ## Segmentation Insights
 
+### age
+- We divided the ages within the dataset into quartiles. This is so that the age ranges can have a similar number of clients
+  - Group 1: 18-33 
+  - Group 2: 33-39
+  - Group 3: 39-48
+  - Group 4: 48-95
+- Successful conversion rates are relatively similar across age groups, ranging from ~9% to ~14%  
+  - Group 1: 14.04%
+  - Group 2: 10.43%
+  - Group 3: 9.07%
+  - Group 4: 13.25%
+- There is a slight dip among middle age clients (33-48), with higher rates observed in the youngest and oldest groups
+- This suggests that age appears to have a limited association with conversion rates
+- When segmented with our A/B groups, the pattern of higher conversions among Low Contact clients persists across the quartile 
+    - Group 1: Low Contact (15.59%) vs High Contact (10.58%)
+    - Group 2: Low Contact (11.37%) vs High Contact (8.54%)
+    - Group 3: Low Contact (10.22%) vs High Contact (7.00%)
+    - Group 4: Low Contact (15.42%) vs High Contact (9.14%)
+- This indicates that the lower conversion rate in High Contact groups is consistent regardless of age
+
 ### job
 
 ### balance
+
+### education
 
 ### poutcome
 - poutcome is the previous outcome of past marketing campaigns by the bank
@@ -43,7 +65,5 @@
     - Known: Low Contact (24.52%) vs High Contact (18.39%)
 - This indicates that lower conversion rates in High Contact groups are consistent across different client histories 
 - Keep in mind, this pattern may reflect underlying client behavior rather than contact frequency alone, as group assignment is not random.
-
-
 
 ### what changed? what stood out? is what i should write here
