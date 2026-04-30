@@ -98,6 +98,40 @@
 
 ### balance
 
+#### Balance grouping
+- Prior to analysis:
+  - Isolate the account balances of balance > 0 and balance <= 0 (Done by labeling each account 'Positive' or 'Non-Positive')
+  - After the Positive accounts have been isolated, we will group them by balanced bins for analysis. This will be for statistical balance and stability 
+  - Lastly, we will combine the isolated Positives back with the Negative accounts to create more structured groupings known as:
+    - Non-Positive
+    - Low Balance
+    - Mid Balance
+    - High Balance
+
+#### Conversion rates
+- Successful conversion rates increases steadily across balance groups
+  - Non-Positive: 6.90%
+  - Low Balance: 9.86%
+  - Mid Balance: 12.27%
+  - High Balance: 15.72%
+- This suggests a clear positive association between account balance and conversion rate
+ 
+#### AVG balance
+- Average account balance of clients who said yes vs clients who said no   
+- account balance of clients who had successful conversion rates:
+  - Non-Positive: -126.70
+  - Low Balance: 158.20
+  - Mid Balance: 710.74
+  - High Balance: 4178.09
+- Account balance of clients who did not have successful conversion rates:
+  - Non-Positive: -167.12
+  - Low Balance: 140.88
+  - Mid Balance: 688.54
+  - High Balance: 4123.58 
+
+-- Analyze the following query tomorrow ^
+
+
 ### education
 
 ### poutcome

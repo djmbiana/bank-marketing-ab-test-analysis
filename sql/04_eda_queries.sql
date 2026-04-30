@@ -186,6 +186,61 @@ ORDER BY contact_group ASC
 
 -- balance 
 
+-- CTE
+WITH balance_base AS(
+    SELECT id 
+           , y 
+           , balance
+           , contact_group
+           , CASE
+                WHEN balance > 0 THEN 'Positive'
+                WHEN balance <= 0 THEN 'Non-Positive'
+                ELSE 'Unknown'
+             END AS balance_type 
+FROM bank_marketing_clean
+), positive_balance_ntile AS(
+    SELECT *
+           , NTILE(3) OVER (ORDER BY balance) AS balance_tertile
+    FROM balance_base
+    WHERE balance > 0
+), balance_grouped AS(
+    SELECT * 
+           , CASE 
+                WHEN balance_tertile = 1 THEN 'Low Balance'
+                WHEN balance_tertile = 2 THEN 'Mid Balance'
+                WHEN balance_tertile = 3 THEN 'High Balance'
+                ELSE 'Non-Positive'
+             END AS balance_group
+    FROM positive_balance_ntile
+    UNION ALL 
+    SELECT *
+           , NULL AS balance_tertile
+           , 'Non-Positive' AS balance_group
+    FROM balance_base
+    WHERE balance <= 0
+)
+
+-- Queries which use the CTE
+
+-- Conversion rates per balance_group
+SELECT balance_group
+       , COUNT(*) AS total_rows
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM balance_grouped
+GROUP BY balance_group;
+
+-- AVG balance of yes_conversion and no_conversion < DO TOMORROW
+SELECT balance_group
+       , ROUND(AVG(CASE WHEN y = 'yes' THEN balance END), 2) AS avg_yes_balance
+       , ROUND(AVG(CASE WHEN y = 'no' THEN balance END), 2) AS avg_yes_balance
+FROM balance_grouped
+GROUP BY balance_group;
+
 -- education
 
 -- poutcome
