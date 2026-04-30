@@ -46,6 +46,65 @@ SELECT contact_group
 FROM bank_marketing_clean
 GROUP BY contact_group;
 
+-->> supporting variable analysis<<
+
+-- Contact
+
+-- Shows the contact method and the amount of clients per contact method, as well as their conversion rates
+SELECT contact
+       , COUNT(*) AS total_rows
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY contact;
+
+-- Segmented with our A/B groups
+SELECT contact_group
+       , contact
+       , COUNT(*) AS total_rows
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY contact_group
+         , contact
+ORDER BY contact_group;
+
+-- month
+SELECT month
+       , COUNT(*) AS total_clients
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY month;
+
+-- Segmenting it with A/B groups
+SELECT contact_group
+       , month
+       , COUNT(*) AS total_clients
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY contact_group
+         , month
+HAVING COUNT(*) >= 1000
+ORDER BY contact_group;
+
 
 -->> segementation variable analysis <<
 
@@ -92,6 +151,42 @@ GROUP BY contact_group
          , age_group
 ORDER BY age_group;
 
+-- job
+
+-- Total client count and conversion rates 
+SELECT job
+       , COUNT(*) AS total_clients
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY job
+HAVING COUNT(*) >= 1000
+ORDER BY yes_percentage DESC;
+
+-- Segemented job into A/B groups
+SELECT contact_group
+       , job
+       , COUNT(*) AS total_clients
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM bank_marketing_clean
+GROUP BY contact_group 
+         , job
+HAVING COUNT(*) >= 1000
+ORDER BY contact_group ASC 
+         , yes_percentage DESC;
+
+-- balance 
+
+-- education
 
 -- poutcome
 

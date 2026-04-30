@@ -25,6 +25,39 @@
 - Group assignment is likely not random as clients in High Contact may be harder to convert or require repeated follow-ups
 - The observed difference may reflect underlying client characteristics rather than contact frequency alone
 
+## Supporting variable insights
+
+### Contact method
+- This will give us insight if conversion rates differ by contact method
+  - Cellular: Successful conversion (14.92%) vs Unsuccesful conversion (85.08%)  
+  - Unknown: Successful conversion (4.07) vs Unsuccesful conversion (95.93%)
+  - Telephone: Successful conversion (13.42%) vs Unsuccesful conversion (86.58%) 
+- Conversion rates are similar between Cellular (14.92%) and Telephone (13.42%) 
+- The 'unknown' category shows a significantly lower conversion rate (4.07%)
+- This may reflect missing or incomplete contact data rather than a true contact method
+- Note: The amount of unknown contact methods may reflect missing logging, so interpretations were made cautiously 
+- When segmenting contact with our A/B groups, higher conversion rates for Low Contact groups are observed across contact methods
+    - Low contact:
+      - Telephone: 17.01%
+      - Cellular: 16.76%
+      - Unknown: 4.28%
+    - High contact:
+      - Cellular: 11.05%
+      - Telephone: 8.89%
+      - Unknown: 3.65%
+-  This tells us that the lower conversion rate in High Contact groups is consistent across different contact methods
+- While the pattern remains consistent, the magnitude of the difference between Low and High Contact groups varies slightly across contact methods
+- While the pattern remains consistent, the magnitude of the difference between Low and High Contact groups varies slightly across contact methods
+
+
+### Month & day 
+- Month will be used to analyze potential seasonal effects influencing subscription rates
+- May had the highest volume of client contacts (13,766) but also one of the lowest conversion rates (6.72%)
+- March shows the highest conversion rate (51.99%) but is one of the lowest-volume months (477), making it less reliable
+- Months with higher conversion rates often have low sample sizes, which may inflate percentages and reduce reliability
+- To address this, we will focus on months who have total_clients >= 1000 to ensure more stable estimates
+- Within the high volume months, the pattern of lower conversion rates in high contact groups remains consistent
+
 ## Segmentation Insights
 
 ### age
@@ -48,6 +81,20 @@
 - This indicates that the lower conversion rate in High Contact groups is consistent regardless of age
 
 ### job
+- Job will be used to compare subscription rates across occupations and provide context with our A/B groups
+- The 'unknown' within the job column will be treated with caution as this may represent missing historical data 
+- Occupations which have fewer clients may inflate the subscription rates of those occupations. 
+  - To address this, we will only be looking at occupations where total_clients >= 1000
+- Retired clients show the highest successful conversion rate (22.79%), though this should be interpreted alongside sample sizes and other factors
+- Higher conversion rates are observed across a range of occupants (e.g., management, admin, unemployed), rather than being concentrated on a single group
+  - With this in mind, we can say that occupation shows some variation in conversion rates, though differences across most occupations are relatively modest 
+  - the 22.79% of retired does support and give context on the age column, where elderly registered as having higher conversion rates
+- Segmenting it into our A/B groups, we can see that the pattern of higher conversion rates in Low Contact groups persists across occupations 
+    - Management: Low Contact (15.41%) vs High Contact (10.68%)
+    - Admin: Low Contact (13.63%) vs High Contact (8.81%)
+    - Technician: Low Contact (12.60%) vs High Contact (8.21%)
+- This indicates that the lower conversion rate in High Contact groups is consistent regardless of occupation
+  
 
 ### balance
 
