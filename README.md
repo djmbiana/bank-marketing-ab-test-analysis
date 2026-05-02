@@ -40,10 +40,26 @@ Does contacting clients more frequently lead to higher subscription rates?
 
 ## Project Structure:
 ```
-.
-├── setup.sql          # table creation + data loading
-├── cleaning.sql       # data cleaning steps
-├── eda_queries.sql    # all analysis queries (ASCII formatted)
+BANK-MARKETING-AB-TEST
+│
+├── data (contains all datasets used in the project)
+│   ├── raw
+│   │   └── bank-full.csv
+│   └── processed
+│       └── bank_marketing_clean.csv
+│
+├── documentation (contains notes for each stage of the analysis process)
+│   ├── 01_business_understanding.md
+│   ├── 02_data_understanding.md
+│   ├── 03_data_cleaning_notes.md
+│   └── 04_eda_notes.md
+│
+├── sql (contains all SQL scripts used in the project)
+│   ├── 01_database_setup.sql
+│   ├── 02_data_checks.sql
+│   ├── 03_data_cleaning.sql
+│   └── 04_eda_queries.sql
+│
 └── README.md
 ```
 
