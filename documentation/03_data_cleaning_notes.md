@@ -61,6 +61,7 @@
 - Clients with zero or negative balances may indicate financial constraints, which could influence subscription behavior
 - Balance will be used for segmentation to compare subscription rates across different financial profiles
 
+
 ### Poutcome column
 - No NULLs present
 - 36,959 clients have an 'unknown' poutcome. While 4,901 have a 'failed' outcome, 1,840 have an 'other' outcome, and 1,511 have a 'successful' outcome.

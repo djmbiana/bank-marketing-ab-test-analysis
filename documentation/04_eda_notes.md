@@ -29,13 +29,15 @@
 
 ### Contact method
 - This will give us insight if conversion rates differ by contact method
-  - Cellular: Successful conversion (14.92%) vs Unsuccesful conversion (85.08%)  
-  - Unknown: Successful conversion (4.07) vs Unsuccesful conversion (95.93%)
-  - Telephone: Successful conversion (13.42%) vs Unsuccesful conversion (86.58%) 
+  - Cellular: Successful conversion (14.92%) vs Unsuccessful conversion (85.08%)  
+  - Unknown: Successful conversion (4.07) vs Unsuccessful conversion (95.93%)
+  - Telephone: Successful conversion (13.42%) vs Unsuccessful conversion (86.58%) 
 - Conversion rates are similar between Cellular (14.92%) and Telephone (13.42%) 
 - The 'unknown' category shows a significantly lower conversion rate (4.07%)
 - This may reflect missing or incomplete contact data rather than a true contact method
 - Note: The amount of unknown contact methods may reflect missing logging, so interpretations were made cautiously 
+
+#### Segmenting contact with A/B groups
 - When segmenting contact with our A/B groups, higher conversion rates for Low Contact groups are observed across contact methods
     - Low contact:
       - Telephone: 17.01%
@@ -45,8 +47,7 @@
       - Cellular: 11.05%
       - Telephone: 8.89%
       - Unknown: 3.65%
--  This tells us that the lower conversion rate in High Contact groups is consistent across different contact methods
-- While the pattern remains consistent, the magnitude of the difference between Low and High Contact groups varies slightly across contact methods
+- This tells us that the lower conversion rate in High Contact groups is consistent across different contact methods
 - While the pattern remains consistent, the magnitude of the difference between Low and High Contact groups varies slightly across contact methods
 
 
@@ -55,12 +56,12 @@
 - May had the highest volume of client contacts (13,766) but also one of the lowest conversion rates (6.72%)
 - March shows the highest conversion rate (51.99%) but is one of the lowest-volume months (477), making it less reliable
 - Months with higher conversion rates often have low sample sizes, which may inflate percentages and reduce reliability
-- To address this, we will focus on months who have total_clients >= 1000 to ensure more stable estimates
+- To address this, we will focus on months with total_clients >= 1000 to ensure more stable estimates
 - Within the high volume months, the pattern of lower conversion rates in high contact groups remains consistent
 
 ## Segmentation Insights
 
-### age
+### Age
 - We divided the ages within the dataset into quartiles. This is so that the age ranges can have a similar number of clients
   - Group 1: 18-33 
   - Group 2: 33-39
@@ -73,6 +74,8 @@
   - Group 4: 13.25%
 - There is a slight dip among middle age clients (33-48), with higher rates observed in the youngest and oldest groups
 - This suggests that age appears to have a limited association with conversion rates
+
+#### Segmenting Age with A/B Groups
 - When segmented with our A/B groups, the pattern of higher conversions among Low Contact clients persists across the quartile 
     - Group 1: Low Contact (15.59%) vs High Contact (10.58%)
     - Group 2: Low Contact (11.37%) vs High Contact (8.54%)
@@ -80,15 +83,17 @@
     - Group 4: Low Contact (15.42%) vs High Contact (9.14%)
 - This indicates that the lower conversion rate in High Contact groups is consistent regardless of age
 
-### job
+### Job
 - Job will be used to compare subscription rates across occupations and provide context with our A/B groups
 - The 'unknown' within the job column will be treated with caution as this may represent missing historical data 
 - Occupations which have fewer clients may inflate the subscription rates of those occupations. 
   - To address this, we will only be looking at occupations where total_clients >= 1000
 - Retired clients show the highest successful conversion rate (22.79%), though this should be interpreted alongside sample sizes and other factors
-- Higher conversion rates are observed across a range of occupants (e.g., management, admin, unemployed), rather than being concentrated on a single group
+- Higher conversion rates are observed across a range of occupantions (e.g., management, admin, unemployed), rather than being concentrated on a single group
   - With this in mind, we can say that occupation shows some variation in conversion rates, though differences across most occupations are relatively modest 
   - the 22.79% of retired does support and give context on the age column, where elderly registered as having higher conversion rates
+
+#### Segmenting Job with A/B Groups
 - Segmenting it into our A/B groups, we can see that the pattern of higher conversion rates in Low Contact groups persists across occupations 
     - Management: Low Contact (15.41%) vs High Contact (10.68%)
     - Admin: Low Contact (13.63%) vs High Contact (8.81%)
@@ -96,9 +101,9 @@
 - This indicates that the lower conversion rate in High Contact groups is consistent regardless of occupation
   
 
-### balance
+### Balance
 
-#### Balance grouping
+#### Grouping balance for effective analysis
 - Prior to analysis:
   - Isolate the account balances of balance > 0 and balance <= 0 (Done by labeling each account 'Positive' or 'Non-Positive')
   - After the Positive accounts have been isolated, we will group them by balanced bins for analysis. This will be for statistical balance and stability 
@@ -109,7 +114,7 @@
     - High Balance
 
 #### Conversion rates
-- Successful conversion rates increases steadily across balance groups
+- Successful conversion rates increase steadily across balance groups
   - Non-Positive: 6.90%
   - Low Balance: 9.86%
   - Mid Balance: 12.27%
@@ -128,23 +133,59 @@
   - Low Balance: 140.88
   - Mid Balance: 688.54
   - High Balance: 4123.58 
+- While conversion rates differ from each balance group, the average balance per balance group is similar between converters and non-converters
 
--- Analyze the following query tomorrow ^
+#### Segmenting Balance with A/B groups 
+- Lower conversion rates in High Contact groups persist even when controlling for client balance  
+- This indicates that the observed A/B pattern is consistent across different balance segments and is not explained by different client account balances 
 
 
-### education
+### Education
+- We will be comparing conversion rates based on the educational attainment of each client
+- This will be interpreted cautiously as the 'unknown' category may represent missing data
+- Individuals with tertiary education have the highest successful conversion rates (15.01%)
+- The remaining groups show similar conversion rates,   suggesting a limited association of client educational attainment and conversion rates
 
-### poutcome
+#### Segmenting it with A/B groups
+- Higher conversion rates in Low Contact groups remain persistent even when segmented by education attainment of clients
+- This gives us insight that the observed A/B pattern is consistent across different education attainment however results involving the 'unknown' category should be interpreted cautiously
+
+### Poutcome
 - poutcome is the previous outcome of past marketing campaigns by the bank
 - We will be comparing 'unknown' poutcome results with 'known' ones by grouping all of the known poutcome results under one category known as 'known'
   - It is important to note that the unknown category may represent either clients not previously contacted or missing historical data, so these interpretations should be taken cautiously
 - In the dataset, there 36,959 clients with unknown history while 8252 have known history
 - Clients with known poutcome history show significantly higher conversion rates compared to clients who have unknown poutcome history
 - The difference is meaningful (23.06% vs 9.16%), suggesting that prior campaign outcomes are associated with client conversion rates 
+
+#### Segmented poutcome with A/B Groups
 - When segmented with our A/B groups, the pattern of lower conversion among High Contact clients persists across both segments
     - Unknown: Low Contact (10.19%) vs High Contact (7.32%)
     - Known: Low Contact (24.52%) vs High Contact (18.39%)
 - This indicates that lower conversion rates in High Contact groups are consistent across different client histories 
 - Keep in mind, this pattern may reflect underlying client behavior rather than contact frequency alone, as group assignment is not random.
 
-### what changed? what stood out? is what i should write here
+## Synthesis
+
+### What stayed consistent?
+The main consistency within the Bank's Marketing campaigns is that Low Contact clients have higher successful conversion rates compared to High Contact clients. This pattern is observed across the following client segments:
+- age
+- job
+- education
+- month
+- balance
+- poutcome
+This reveals that the observed A/B pattern is robust and persits regardless of differences in client characteristics.
+
+### What actually influences conversion?
+
+
+### What surprised me?
+
+### What's the limitation?
+
+### Business implications
+
+### Reccomendations
+
+### Suggest next steps
