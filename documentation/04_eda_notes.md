@@ -21,7 +21,7 @@
 ## Key Observation
 - Groups are uneven in size. Low contact has 30,049 clients while High contact has 15,162 clients.
 - Low contact shows higher conversion rates (13.19%) than high contact (8.75%)
-- This pattern counters our inital hypothesis of more contact = higher conversion rate
+- This pattern counters our initial hypothesis of more contact = higher conversion rate
 - Group assignment is likely not random as clients in High Contact may be harder to convert or require repeated follow-ups
 - The observed difference may reflect underlying client characteristics rather than contact frequency alone
 
@@ -164,28 +164,3 @@
     - Known: Low Contact (24.52%) vs High Contact (18.39%)
 - This indicates that lower conversion rates in High Contact groups are consistent across different client histories 
 - Keep in mind, this pattern may reflect underlying client behavior rather than contact frequency alone, as group assignment is not random.
-
-## Synthesis
-
-### What stayed consistent?
-The main consistency within the Bank's Marketing campaigns is that Low Contact clients have higher successful conversion rates compared to High Contact clients. This pattern is observed across the following client segments:
-- age
-- job
-- education
-- month
-- balance
-- poutcome
-This reveals that the observed A/B pattern is robust and persits regardless of differences in client characteristics.
-
-### What actually influences conversion?
-
-
-### What surprised me?
-
-### What's the limitation?
-
-### Business implications
-
-### Reccomendations
-
-### Suggest next steps
