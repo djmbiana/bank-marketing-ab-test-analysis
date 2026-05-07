@@ -6,7 +6,7 @@
   - 88.30% don't end up subscribing
   - 11.70% of clients are the ones who end up subscribing 
 
-## A/B Comparison
+## Simulated Group Comparison (Low Contact vs High Contact)
 - Grouping the clients into Low Contact and High contact offers more context to the conversion rates
   - 30,049 clients have been contacted 1-2 times (Low Contact)
   - 15,162 clients have been contacted 3+ times (High Contact) 
@@ -19,7 +19,7 @@
       - 91.25% of clients don't subscribe
 
 ## Key Observation
-- Groups are uneven in size. Low contact has 30,049 clients while High contact has 15,162 clients.
+- Groups are uneven in size. Low contact has 30,049 clients while High contact has 15,162 clients
 - Low contact shows higher conversion rates (13.19%) than high contact (8.75%)
 - This pattern counters our initial hypothesis of more contact = higher conversion rate
 - Group assignment is likely not random as clients in High Contact may be harder to convert or require repeated follow-ups
@@ -37,8 +37,8 @@
 - This may reflect missing or incomplete contact data rather than a true contact method
 - Note: The amount of unknown contact methods may reflect missing logging, so interpretations were made cautiously 
 
-#### Segmenting contact with A/B groups
-- When segmenting contact with our A/B groups, higher conversion rates for Low Contact groups are observed across contact methods
+#### Segmenting contact with groups
+- When segmenting contact with our contact groups, higher conversion rates for Low Contact groups are observed across contact methods
     - Low contact:
       - Telephone: 17.01%
       - Cellular: 16.76%
@@ -75,8 +75,8 @@
 - There is a slight dip among middle age clients (33-48), with higher rates observed in the youngest and oldest groups
 - This suggests that age appears to have a limited association with conversion rates
 
-#### Segmenting Age with A/B Groups
-- When segmented with our A/B groups, the pattern of higher conversions among Low Contact clients persists across the quartile 
+#### Segmenting Age with Groups
+- When segmented with our contact groups, the pattern of higher conversions among Low Contact clients persists across the quartile 
     - Group 1: Low Contact (15.59%) vs High Contact (10.58%)
     - Group 2: Low Contact (11.37%) vs High Contact (8.54%)
     - Group 3: Low Contact (10.22%) vs High Contact (7.00%)
@@ -84,7 +84,7 @@
 - This indicates that the lower conversion rate in High Contact groups is consistent regardless of age
 
 ### Job
-- Job will be used to compare subscription rates across occupations and provide context with our A/B groups
+- Job will be used to compare subscription rates across occupations and provide context with our contact groups
 - The 'unknown' within the job column will be treated with caution as this may represent missing historical data 
 - Occupations which have fewer clients may inflate the subscription rates of those occupations. 
   - To address this, we will only be looking at occupations where total_clients >= 1000
@@ -93,14 +93,13 @@
   - With this in mind, we can say that occupation shows some variation in conversion rates, though differences across most occupations are relatively modest 
   - the 22.79% of retired does support and give context on the age column, where elderly registered as having higher conversion rates
 
-#### Segmenting Job with A/B Groups
-- Segmenting it into our A/B groups, we can see that the pattern of higher conversion rates in Low Contact groups persists across occupations 
+#### Segmenting Job with Groups
+- Segmenting it into our contact groups, we can see that the pattern of higher conversion rates in Low Contact groups persists across occupations 
     - Management: Low Contact (15.41%) vs High Contact (10.68%)
     - Admin: Low Contact (13.63%) vs High Contact (8.81%)
     - Technician: Low Contact (12.60%) vs High Contact (8.21%)
 - This indicates that the lower conversion rate in High Contact groups is consistent regardless of occupation
   
-
 ### Balance
 
 #### Grouping balance for effective analysis
@@ -135,9 +134,9 @@
   - High Balance: 4123.58 
 - While conversion rates differ from each balance group, the average balance per balance group is similar between converters and non-converters
 
-#### Segmenting Balance with A/B groups 
+#### Segmenting Balance with Groups 
 - Lower conversion rates in High Contact groups persist even when controlling for client balance  
-- This indicates that the observed A/B pattern is consistent across different balance segments and is not explained by different client account balances 
+- This indicates that the observed pattern is consistent across different balance segments and is not explained by different client account balances 
 
 
 ### Education
@@ -146,9 +145,9 @@
 - Individuals with tertiary education have the highest successful conversion rates (15.01%)
 - The remaining groups show similar conversion rates,   suggesting a limited association of client educational attainment and conversion rates
 
-#### Segmenting it with A/B groups
+#### Segmenting it with Groups
 - Higher conversion rates in Low Contact groups remain persistent even when segmented by education attainment of clients
-- This gives us insight that the observed A/B pattern is consistent across different education attainment however results involving the 'unknown' category should be interpreted cautiously
+- This gives us insight that the observed group pattern is consistent across different education attainment however results involving the 'unknown' category should be interpreted cautiously
 
 ### Poutcome
 - poutcome is the previous outcome of past marketing campaigns by the bank
@@ -158,8 +157,8 @@
 - Clients with known poutcome history show significantly higher conversion rates compared to clients who have unknown poutcome history
 - The difference is meaningful (23.06% vs 9.16%), suggesting that prior campaign outcomes are associated with client conversion rates 
 
-#### Segmented poutcome with A/B Groups
-- When segmented with our A/B groups, the pattern of lower conversion among High Contact clients persists across both segments
+#### Segmented poutcome with Groups
+- When segmented with our contact groups, the pattern of lower conversion among High Contact clients persists across both segments
     - Unknown: Low Contact (10.19%) vs High Contact (7.32%)
     - Known: Low Contact (24.52%) vs High Contact (18.39%)
 - This indicates that lower conversion rates in High Contact groups are consistent across different client histories 

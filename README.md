@@ -1,4 +1,4 @@
-# Bank Marketing A/B Analysis (SQL + Power BI Project)
+# Bank Marketing Campaign Analysis (SQL + Power BI Project)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-000000?style=for-the-badge&logo=databricks&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
@@ -8,12 +8,12 @@ Dataset: https://archive.ics.uci.edu/dataset/222/bank+marketing
 ---
 
 ## Overview
-This project analyzes a bank marketing dataset to evaluate whether the number of marketing contacts influences client subscription rates for term deposits.
+This project analyzes a bank marketing dataset to evaluate whether the number of marketing contacts is associated with client subscription rates for term deposits.
 
-Using SQL, the project explores conversion patterns, segments clients across multiple dimensions, and evaluates whether increased contact frequency leads to higher conversion rates.
+Using SQL, the project simulates an A/B-style comparison using observational data, grouping clients by contact frequency and exploring conversion patterns across multiple client segments. Since clients were not randomly assigned to contact groups, findings reflect associations rather than causal conclusions.
 
 ## Key Question:
-Does contacting clients more frequently lead to higher subscription rates?
+Is contacting clients more frequently associated with higher subscription rates??
 
 ## Key Findings:
 - Low Contact clients (1–2 calls) consistently show higher conversion rates than High Contact clients (3+ calls)
@@ -29,9 +29,10 @@ Does contacting clients more frequently lead to higher subscription rates?
 
 ## Methodology:
 - Data cleaning and preprocessing in PostgreSQL
-- Created A/B groups based on contact frequency:
-  - Low Contact (1–2 calls)
-  - High Contact (3+ calls)
+- Simulated a Low Contact vs. High Contact comparison using observational data:
+  - Low Contact (Group A): Clients contacted 1–2 times
+  - High Contact (Group B): Clients contacted 3+ times
+  - Note: Groups are not randomly assigned. Differences in conversion rates may reflect underlying client characteristics
 - Performed segmentation analysis across:
   - client demographics (age, job, education)
   - financial variables (balance)
@@ -40,9 +41,9 @@ Does contacting clients more frequently lead to higher subscription rates?
 
 ## Dashboard Summary
 
-![Dashboard for A/B Test Analysis](dashboard/bank-marketing-dashboard-img.png)
+![Dashboard for the Analysis](dashboard/bank-marketing-dashboard-img.png)
 
-The A/B dashboard focuses on comparing successful conversion rates between Low Contact and High Contact client groups across multiple variables.
+The dashboard focuses on comparing successful conversion rates between Low Contact and High Contact client groups across multiple variables.
 
 Key findings:
 - Low Contact groups consistently achieved higher conversion rates
@@ -54,7 +55,7 @@ This dashboard was made to provide a concise business summary of the exploratory
 
 ## Project Structure:
 ```
-BANK-MARKETING-AB-TEST
+BANK-MARKETING-CONTACT-ANALYSIS
 │
 ├── dashboard (contains Power BI dashboard files and exports)
 │   ├── bank-marketing-dashboard-img.png
@@ -81,6 +82,12 @@ BANK-MARKETING-AB-TEST
 └── README.md
 ```
 
+## Limitations
+- This is an observational analysis - clients were not randomly assigned to contact frequency groups
+- Differences in conversion rates may reflect underlying client characteristics rather than the direct effect of contact frequency
+- The presence of 'unknown' categories in several columns (contact method, poutcome, job, education) introduces uncertainty and should be interpreted cautiously
+- A properly randomized experiment would be needed to establish causal conclusions
+
 ## Status:
 - Completed exploratory analysis and dashboard visualization in PostgreSQL and Power BI.
-- Future improvements may include predictive modeling and advanced statistical testing.
+- Future improvements may include statistical significance testing (e.g., chi-square) and predictive modeling

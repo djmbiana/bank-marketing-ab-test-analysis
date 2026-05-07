@@ -31,7 +31,7 @@
 
 ### Treatment variable
 
--  *campaign*
+- *campaign*
     - This column represents the number of contacts and will be used to analyze whether increased contact frequency is associated with higher subscription rates
 
 ### Supporting variables
@@ -56,7 +56,7 @@
 
 ## Key Variables Summary
 
-This analysis aims to answer the question: “Do more marketing contacts lead to a higher subscription rate for the bank’s term deposit?”
+This analysis aims to answer the question: “Is increased contact frequency associated with higher subscription rates?”
 
 The *y* column is used as the target variable, indicating whether a client subscribed to the term deposit (yes/no). The treatment variable is *campaign,* which represents the number of times a client was contacted and it is used to analyze whether increased contact frequency is associated with higher subscription rates.
 

@@ -8,10 +8,12 @@ A Portuguese bank uses direct marketing campaigns through phone calls to promote
 
 We want to test whether increasing the number of marketing contacts leads to a higher subscription rate for the bank’s term deposit product.
 
+Since this dataset is observational, meaning customers were not randomly assigned to contact groups, this analysis simulates an A/B style framework using real campaign data. The goal is to compare conversion rates between clients who received fewer contacts versus those who received more, while acknowledging that group differences may reflect underlying client characteristics rather than the effect of contact frequency alone.
+
 ## Groups (A vs B)
 
-Group A: Customers who received fewer contacts (e.g., 1 call)   
-Group B: Customers who received more contacts (e.g., 2 or more calls)  
+Group A: Customers who received 1-2 calls  
+Group B: Customers who received 3 or more calls 
 Measure: Success is measured by the subscription rate, defined as the proportion of customers who subscribed to the term deposit.
 
 ## Assumptions
@@ -22,4 +24,4 @@ Measure: Success is measured by the subscription rate, defined as the proportion
 
 ## Limitations
 
-This analysis simulates an AB-style comparison using observational data. Since customers are not randomly assigned to contact frequency groups, results may reflect underlying differences between customers rather than the effect of repeated calls alone.
+This analysis simulates an A/B-style comparison using observational data. Since customers are not randomly assigned to contact frequency groups, results may reflect underlying differences between customers rather than the effect of repeated calls alone.

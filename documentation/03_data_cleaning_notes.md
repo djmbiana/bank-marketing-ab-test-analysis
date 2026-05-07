@@ -14,7 +14,7 @@
 ## Treatment variable: campaign
 - No NULLs or zero values within the campaign
 - A good amount of clients were only called 1-2 times
-- This affects our A/B testing later on as the amount of clients called 3+ times drops off dramatically
+- This affects our simulated comparison later on as the amount of clients called 3+ times drops off dramatically
 - This shifts the testing to analyze Low vs High Contact intensity
   - This will ask the question "Does contacting clients 3+ times lead to higher subscription rates?"
   - Group A = Clients who have only received 1-2 calls
@@ -31,13 +31,13 @@
 - 2,909 clients were contacted via telephone
 - Contact method may influence subscription rates and may explain differences between groups
 - We will keep contact and treat 'unknown' as its own category
-- It will be used for segmentation checks (e.g., comparing conversion rates by contact method) and as a contextual support when interpreting A/B results
+- It will be used for segmentation checks (e.g., comparing conversion rates by contact method) and as a contextual support when interpreting group differences 
 - The large number of unknowns might reflect missing logging rather than a true category, so interpretations involving these unknowns should be made cautiously
 
 ### Month & day columns
 - No NULLs or Unknowns, making these fields clean and ready for analysis.
 - month is a text field and day is an integer field
-- These variables can be used to analyze the number of subscriptions by month as a contextual support when interpreting A/B results
+- These variables can be used to analyze the number of subscriptions by month as a contextual support when interpreting group differences
 - The month may help when trying to capture seasonal effects that influence subscription rates
 - Since month is stored as text, it may require transformation for proper ordering during analysis
 
@@ -47,7 +47,7 @@
 - No NULLs present within the job column
 - Standardization: normalize values (e.g., admin. -> admin) to ensure consistent categories
 - 288 records are labeled as “unknown”. this is a small share and will be retained as its own category 
-- Job column will be used for segmentation to compare subscription rates across occupations and provide context when interpreting A/B results
+- Job column will be used for segmentation to compare subscription rates across occupations and provide context when interpreting group differences 
 
 ### Age column
 - No NULLs or unknown present in the age column
@@ -67,7 +67,7 @@
 - 36,959 clients have an 'unknown' poutcome. While 4,901 have a 'failed' outcome, 1,840 have an 'other' outcome, and 1,511 have a 'successful' outcome.
 - The unknown category may represent either clients not previously contacted or missing historical data, so it should be interpreted cautiously
 - Poutcome will be kept and unknown will be treated like its own category
-- This will be utilized for segmentation to see the comparison of clients with a known vs unknown previous campaign outcomes and their subscription rates during A/B analysis.
+- This will be utilized for segmentation to see the comparison of clients with a known vs unknown previous campaign outcomes and their subscription rates
 - Clients with a previous "success" outcome may be more responsive to current marketing efforts
 
 ### Education column

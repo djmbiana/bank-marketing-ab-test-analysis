@@ -8,14 +8,14 @@ The main consistency within the Bank's Marketing campaigns is that Low Contact c
 - month
 - balance
 - poutcome
-This reveals that the observed A/B pattern is robust and persits regardless of differences in client characteristics.
+This reveals that the observed pattern is robust and persists regardless of differences in client characteristics.
 
 ## What actually influences conversion?
 Client balance and previous marketing outcomes show the strongest association with conversion rates:
 
-- Clients with higher account balances are more likely to be successfuly converted. This suggests that the financial capacity of a client may be related to their likelihood of availing of the bank's term deposit.
+- Clients with higher account balances are more likely to be successfully converted. This suggests that the financial capacity of a client may be related to their likelihood of availing of the bank's term deposit.
 
-- Clients who have known history with the banks previous marketing campaigns also show higher conversion rates compared to clients who have no or unknown histories. This may reflect prior engagement or familarity with bank services.
+- Clients who have known history with the banks previous marketing campaigns also show higher conversion rates compared to clients who have no or unknown histories. This may reflect prior engagement or familiarity with bank services.
 
 
 ## What surprised me?
@@ -35,7 +35,7 @@ The findings suggest that increasing contact frequency does not necessarily impr
 
 This highlights the importance of identifying high-quality leads early and tailoring engagement strategies accordingly.
 
-## Reccomendations
+## Recommendations
 The bank should prioritize targeted outreach over mass calling strategies. Segmentation based on previous campaign outcomes (poutcome) can help identify clients who are more likely to convert, allowing for more efficient allocation of marketing efforts.
 
 For high-contact clients, the bank should further analyze common characteristics such as balance and past outcomes to better understand why these clients are harder to convert. This can inform the design of more tailored marketing strategies, rather than relying on repeated follow-ups.
