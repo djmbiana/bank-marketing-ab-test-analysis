@@ -1,1 +1,13 @@
+# Macos
 .DS_STORE
+
+# Python Venvs
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+ENV/
