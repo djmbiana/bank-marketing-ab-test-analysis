@@ -16,6 +16,7 @@ Using SQL, the project simulates an A/B-style comparison using observational dat
 Is contacting clients more frequently associated with higher subscription rates??
 
 ## Key Findings:
+
 - Low Contact clients (1–2 calls) consistently show higher conversion rates than High Contact clients (3+ calls)
 - This pattern persists across:
   - balance
@@ -39,6 +40,108 @@ Is contacting clients more frequently associated with higher subscription rates?
   - campaign variables (contact, poutcome)
   - Used aggregation and conditional logic (CASE, GROUP BY, CTEs) to compute client conversion rates
 
+## SQL Findings:
+
+### Contact Group Conversion Rates
+Computes subscription rates across Low and High Contact groups using conditional aggregation
+
+```sql
+SELECT contact_group 
+        , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage 
+FROM bank_marketing_clean
+GROUP BY contact_group;
+
+-- results: 
+-- Low Contact clients at 13.19% yes vs 86.81% no
+-- High Contact clients at 8.75% yes vs 91.25% no
+```
+
+### Age Segmentation Using Window Functions
+Divides clients into quartile age groups using NTILE() and computes the conversion rate per age group while segmenting with our contact groups.
+
+```sql
+WITH age_quartile AS (
+    SELECT *
+           , NTILE(4) OVER (ORDER BY age) AS age_group
+    FROM bank_marketing_clean
+)
+
+SELECT contact_group
+       , age_group
+       , MIN(age) AS min_age
+       , MAX(age) AS max_age
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM age_quartile
+GROUP BY contact_group
+         , age_group
+ORDER BY age_group;
+
+-- Results:
+-- Low contact outperforms High Contact across all age quartiles (e.x. ages 18-33: 15.59% vs 10.58%)
+```
+
+### Balance Group Analysis Using Chained CTEs
+Segments client balances into structured groups using a multi-step CTE with NTILE() and UNION ALL, then computes conversion rates per group.
+
+```sql
+WITH balance_base AS(
+    SELECT id 
+           , y 
+           , balance
+           , contact_group
+           , CASE
+                WHEN balance > 0 THEN 'Positive'
+                WHEN balance <= 0 THEN 'Non-Positive'
+                ELSE 'Unknown'
+             END AS balance_type 
+FROM bank_marketing_clean
+), positive_balance_ntile AS(
+    SELECT *
+           , NTILE(3) OVER (ORDER BY balance) AS balance_tertile
+    FROM balance_base
+    WHERE balance > 0
+), balance_grouped AS(
+    SELECT * 
+           , CASE 
+                WHEN balance_tertile = 1 THEN 'Low Balance'
+                WHEN balance_tertile = 2 THEN 'Mid Balance'
+                WHEN balance_tertile = 3 THEN 'High Balance'
+                ELSE 'Non-Positive'
+             END AS balance_group
+    FROM positive_balance_ntile
+    UNION ALL 
+    SELECT *
+           , NULL AS balance_tertile
+           , 'Non-Positive' AS balance_group
+    FROM balance_base
+    WHERE balance <= 0
+)
+
+SELECT balance_group
+       , COUNT(*) AS total_rows
+       , ROUND(
+            COUNT(CASE WHEN y = 'yes' THEN 1 END) * 100.0 / COUNT(*),
+            2) AS yes_percentage 
+       , ROUND(
+            COUNT(CASE WHEN y = 'no' THEN 1 END) * 100.0 / COUNT(*),
+             2) AS no_percentage
+FROM balance_grouped
+GROUP BY balance_group;
+
+-- Results:
+-- Non-Positive: 6.90% | Low Balance: 9.86% | Mid Balance: 12.27% | High Balance: 15.72%
+```
+
 ## Dashboard Summary
 
 ![Dashboard for the Analysis](dashboard/bank-marketing-dashboard-img.png)
@@ -54,6 +157,7 @@ Key findings:
 This dashboard was made to provide a concise business summary of the exploratory analysis conducted in PostgreSQL
 
 ## Project Structure:
+
 ```
 BANK-MARKETING-CONTACT-ANALYSIS
 │

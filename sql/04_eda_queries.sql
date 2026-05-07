@@ -22,7 +22,7 @@ SELECT ROUND(
 FROM bank_marketing_clean;
 
 -- --------------------------------------------
--- A/B Analysis
+-- A/B-style Analysis
 -- --------------------------------------------
 
 -- >>> checks the successful conversion rate between the two groups <<<
@@ -72,7 +72,7 @@ SELECT contact
 FROM bank_marketing_clean
 GROUP BY contact;
 
--- >>> Segmented with Contact with our A/B groups <<<
+-- >>> Segmented with Contact with our contact groups <<<
 SELECT contact_group
        , contact
        , COUNT(*) AS total_rows
@@ -103,7 +103,7 @@ SELECT month
 FROM bank_marketing_clean
 GROUP BY month;
 
--- >>> Segmenting month with A/B groups <<<
+-- >>> Segmenting month with test groups <<<
 SELECT contact_group
        , month
        , COUNT(*) AS total_clients
@@ -148,13 +148,7 @@ FROM age_quartile
 GROUP BY age_group
 ORDER BY age_group;
 
--->>> segmented age into our A/B groups <<<
-WITH age_quartile AS (
-    SELECT *
-           , NTILE(4) OVER (ORDER BY age) AS age_group
-    FROM bank_marketing_clean
-)
-
+-->>> segmented age into our contact groups <<<
 SELECT contact_group
        , age_group
        , MIN(age) AS min_age
@@ -188,7 +182,7 @@ GROUP BY job
 HAVING COUNT(*) >= 1000
 ORDER BY yes_percentage DESC;
 
--- >>> Segemented job into A/B groups <<<
+-- >>> Segemented job into contact groups <<<
 SELECT contact_group
        , job
        , COUNT(*) AS total_clients
@@ -260,12 +254,12 @@ GROUP BY balance_group;
 -- AVG balance of converters and non-converters as well as the average difference between all of them
 SELECT balance_group
        , ROUND(AVG(CASE WHEN y = 'yes' THEN balance END), 2) AS avg_yes_balance
-       , ROUND(AVG(CASE WHEN y = 'no' THEN balance END), 2) AS avg_yes_balance
+       , ROUND(AVG(CASE WHEN y = 'no' THEN balance END), 2) AS avg_no_balance
        , ROUND(AVG(CASE WHEN y = 'no' THEN balance END) - AVG(CASE WHEN y = 'yes' THEN balance END), 2) AS avg_balance_difference
 FROM balance_grouped
 GROUP BY balance_group;
 
--- Segmenting conversion rates with A/B groups
+-- Segmenting conversion rates with contract groups
 SELECT contact_group
        , balance_group
        , ROUND(
@@ -294,7 +288,7 @@ SELECT education
 FROM bank_marketing_clean
 GROUP BY education;
 
--- >>> Segmenting educational attainment with A/B Groups <<<
+-- >>> Segmenting educational attainment with Contact Groups <<<
 SELECT contact_group
        , education
        , COUNT(*) AS total_rows
@@ -337,7 +331,7 @@ GROUP BY contact_group
          , poutcome_clean
 ORDER BY poutcome_clean;
 
--- >>> How does this segmentation affect our A/B groups? <<<
+-- >>> How does this segmentation affect our contact groups? <<<
 WITH poutcome_analysis AS (
     SELECT *
            , CASE
