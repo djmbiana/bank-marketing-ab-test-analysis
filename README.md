@@ -1,6 +1,7 @@
 # Bank Marketing Campaign Analysis (SQL + Power BI Project)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-000000?style=for-the-badge&logo=databricks&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 
 Dataset: https://archive.ics.uci.edu/dataset/222/bank+marketing
@@ -201,6 +202,10 @@ BANK-MARKETING-CONTACT-ANALYSIS
 ## Chi-Test Interpretation
 A chi-square test was conducted on this dataset to evaluate whether the difference in conversion rates between Low Contact and High Contact groups has statistical significance. The results (χ² = 191.28, p < 0.001) indicates that the association between contact frequency and subscription outcome is statistically significant and is unlikely to be due to chance. However, because this is observational data, the result may reflect an association rather than a causal relationship as clients in High Contact groups may differ in underlying characteristics that independently influence conversion likelihood.
 
-## Status:
-- Completed exploratory analysis and dashboard visualization in PostgreSQL and Power BI.
-- Future improvements may include statistical significance testing (e.g., chi-square) and predictive modeling
+## Status
+Completed: exploratory analysis, simulated group comparison, statistical testing, and dashboard visualization.
+
+## Future Improvements
+- Confidence intervals for conversion rate differences
+- Logistic regression to identify strongest predictors of conversion
+- Deeper causal analysis via properly randomized experiment design
