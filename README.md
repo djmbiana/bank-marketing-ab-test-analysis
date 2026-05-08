@@ -12,8 +12,10 @@ This project analyzes a bank marketing dataset to evaluate whether the number of
 
 Using SQL, the project simulates an A/B-style comparison using observational data, grouping clients by contact frequency and exploring conversion patterns across multiple client segments. Since clients were not randomly assigned to contact groups, findings reflect associations rather than causal conclusions.
 
+This project also runs a chi-square test to evaluate whether the association between contact frequency and client subscription outcomes is statistically signifiacnt.
+
 ## Key Question:
-Is contacting clients more frequently associated with higher subscription rates??
+- Is contacting clients more frequently associated with higher subscription rates?
 
 ## Key Findings:
 
@@ -182,6 +184,10 @@ BANK-MARKETING-CONTACT-ANALYSIS
 │   ├── 04_eda_queries.sql
 │   └── 05_visualization_table.sql
 │
+├── tests (contains python scripts for testing variables)    
+│   └── chi-square_test.py
+│
+│
 ├── .gitignore
 └── README.md
 ```
@@ -191,6 +197,9 @@ BANK-MARKETING-CONTACT-ANALYSIS
 - Differences in conversion rates may reflect underlying client characteristics rather than the direct effect of contact frequency
 - The presence of 'unknown' categories in several columns (contact method, poutcome, job, education) introduces uncertainty and should be interpreted cautiously
 - A properly randomized experiment would be needed to establish causal conclusions
+
+## Chi-Test Interpretation
+A chi-square test was conducted on this dataset to evaluate whether the difference in conversion rates between Low Contact and High Contact groups has statistical significance. The results (χ² = 191.28, p < 0.001) indicates that the association between contact frequency and subscription outcome is statistically significant and is unlikely to be due to chance. However, because this is observational data, the result may reflect an association rather than a causal relationship as clients in High Contact groups may differ in underlying characteristics that independently influence conversion likelihood.
 
 ## Status:
 - Completed exploratory analysis and dashboard visualization in PostgreSQL and Power BI.
