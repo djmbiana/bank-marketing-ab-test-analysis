@@ -159,39 +159,6 @@ Key findings:
 
 This dashboard was made to provide a concise business summary of the exploratory analysis conducted in PostgreSQL
 
-## Project Structure:
-
-```
-BANK-MARKETING-CONTACT-ANALYSIS
-│
-├── dashboard (contains Power BI dashboard files and exports)
-│   ├── bank-marketing-dashboard-img.png
-│   ├── bank-marketing-dashboard.pbix
-│   └── bank-marketing-dashboard.pdf
-│
-├── data (contains all datasets used in the project)
-│   ├── processed
-│   │   ├── bank_marketing_clean.csv
-│   │   └── bank_marketing_dashboard.csv
-│   └── raw
-│       └── bank-full.csv
-│
-├── documentation (contains notes for each stage of the analysis process)
-│
-├── sql (contains all SQL scripts used in the project)
-│   ├── 01_database_setup.sql
-│   ├── 02_data_checks.sql
-│   ├── 03_data_cleaning.sql
-│   ├── 04_eda_queries.sql
-│   └── 05_visualization_table.sql
-│
-├── tests (contains python scripts for testing variables)    
-│   └── chi-square_test.py
-│
-│
-├── .gitignore
-└── README.md
-```
 
 ## Limitations
 - This is an observational analysis - clients were not randomly assigned to contact frequency groups
