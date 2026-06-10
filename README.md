@@ -1,4 +1,4 @@
-# Bank Marketing Contact Analysis
+<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/6f4a7650-25ea-479c-a11f-e2846e9ab054" /># Bank Marketing Contact Analysis
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
@@ -46,8 +46,8 @@ Demographic variables (age, job, education) showed weaker associations by compar
 ---
 
 ## Dashboard
+<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/8b2e90ae-66c8-4df1-951a-c1188dd62f9e" />
 
-<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/c6130139-45a6-4c14-ab9d-fb47a8d060e7" />
 
 
 ---
