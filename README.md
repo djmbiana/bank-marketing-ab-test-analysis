@@ -47,7 +47,8 @@ Demographic variables (age, job, education) showed weaker associations by compar
 
 ## Dashboard
 
-[![Dashboard](dashboard/bank-marketing-dashboard-img.png)](dashboard/bank-marketing-dashboard-img.png)
+<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/c6130139-45a6-4c14-ab9d-fb47a8d060e7" />
+
 
 ---
 
