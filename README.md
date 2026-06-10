@@ -3,15 +3,15 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 
-> Dataset: [UCI Bank Marketing Dataset](https://archive.ics.uci.edu/dataset/222/bank+marketing)
+Dataset: https://archive.ics.uci.edu/dataset/222/bank+marketing
 
 ---
 
 ## Executive Summary
 
-- Low-contact clients (1–2 calls) converted **~51% more often** than high-contact clients (3+ calls) — 13.19% vs. 8.75%
-- Account balance and prior campaign outcome were the **strongest predictors** of conversion, outperforming all demographic variables
-- Findings suggest banks may improve marketing efficiency by **prioritizing high-quality leads earlier** in the sales funnel rather than increasing contact frequency
+- Low Contact clients (1-2 calls) converted ~51% more often than High Contact clients (3+ calls): 13.19% vs. 8.75%
+- Account balance and prior campaign outcome were the strongest predictors of conversion, outperforming all demographic variables
+- Findings suggest banks may improve marketing efficiency by prioritizing high-quality leads earlier in the sales funnel rather than increasing contact frequency
 
 ---
 
@@ -19,11 +19,11 @@
 
 **More calls did not mean more conversions.**
 
-Low-contact clients outperformed high-contact clients across every segment tested — age, job, education, balance tier, and contact method. The pattern held without exception.
+Low Contact clients outperformed High Contact clients across every segment tested: age, job, education, balance tier, and contact method. The pattern held without exception.
 
 | Group | Conversion Rate |
 |---|---|
-| Low Contact (1–2 calls) | 13.19% |
+| Low Contact (1-2 calls) | 13.19% |
 | High Contact (3+ calls) | 8.75% |
 
 ---
@@ -39,29 +39,29 @@ Low-contact clients outperformed high-contact clients across every segment teste
 | Mid | 12.27% |
 | High | 15.72% |
 
-High-balance clients converted at more than twice the rate of non-positive balance clients. Prior successful campaign outcomes showed a similar pattern — clients with a positive `poutcome` converted at substantially higher rates regardless of contact frequency.
+High-balance clients converted at more than twice the rate of non-positive balance clients. Prior successful campaign outcomes showed a similar pattern: clients with a positive `poutcome` converted at substantially higher rates regardless of contact frequency.
 
 Demographic variables (age, job, education) showed weaker associations by comparison.
 
 ---
 
 ## Dashboard
-<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/8b2e90ae-66c8-4df1-951a-c1188dd62f9e" />
 
+<img width="2767" height="2184" alt="bank-marketing-dashboard-2" src="https://github.com/user-attachments/assets/a8e807a7-0aa6-454f-85e4-4685415952b1" />
 
 
 ---
 
 ## Statistical Validation
 
-A chi-square test confirmed the contact frequency–conversion association is statistically significant (χ² = 191.28, p < 0.001). Because this is observational data, the result reflects association rather than causation — clients in high-contact groups may differ in underlying characteristics that independently affect conversion likelihood.
+A chi-square test confirmed the contact frequency-conversion association is statistically significant (χ² = 191.28, p < 0.001). Because this is observational data, the result reflects association rather than causation. Clients in high-contact groups may differ in underlying characteristics that independently affect conversion likelihood.
 
 ---
 
 ## Methodology
 
 - **Stack:** PostgreSQL, Power BI, Python (chi-square test)
-- **Approach:** Simulated A/B comparison on observational data — Low Contact (1–2 calls) vs. High Contact (3+ calls)
+- **Approach:** Simulated A/B comparison on observational data: Low Contact (1-2 calls) vs. High Contact (3+ calls)
 - **Techniques:** Conditional aggregation, window functions (NTILE), chained CTEs, chi-square significance testing
 - **Segmentation:** Balance tier, age quartile, job, education, contact method, prior campaign outcome
 
@@ -117,9 +117,9 @@ GROUP BY balance_group;
 
 ## Limitations
 
-- Observational data — no random assignment to contact groups
+- Observational data: clients were not randomly assigned to contact frequency groups
 - High-contact clients may be inherently harder to convert, independent of contact frequency
-- `unknown` values in contact method, poutcome, job, and education introduce uncertainty
+- `unknown` values in contact method, poutcome, job, and education introduce uncertainty and should be interpreted cautiously
 - Causal conclusions require a properly randomized experiment
 
 ---
